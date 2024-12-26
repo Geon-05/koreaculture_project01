@@ -1,0 +1,279 @@
+body { 
+    font-family: Arial, sans-serif;  
+
+}
+
+/* 구글 폰트 */
+.black-han-sans-regular {
+    font-family: "Black Han Sans", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.jua-regular {
+font-family: "Jua", serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.do-hyeon-regular {
+    font-family: "Do Hyeon", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+/* loading 안내*/
+.loading {
+    display: flex; /* Flexbox 활성화 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 100vh; /* 전체 화면 높이 */
+    width: 100vw; /* 전체 화면 너비 */
+    position: absolute; /* 페이지에 고정 */
+    top: 0;
+    left: 0;
+}
+
+
+.container {
+    position: relative; /* 자식 요소가 이 컨테이너를 기준으로 위치 설정 */
+    width: 500px;       /* 컨테이너 너비 */
+    height: 300px;      /* 컨테이너 높이 */
+    border: 1px solid #ccc; /* 컨테이너 확인용 테두리 */
+}
+
+/*네비게이션 바*/
+header {
+    position: fixed; /* 화면 상단에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 높은 z-index로 이미지보다 위에 위치 */
+    background-color: white;
+    padding: 10px;
+}
+.navbar {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.navbar-toggler {
+    box-shadow: none;         /* 기본 그림자 제거 */
+    background: none;         /* 배경 제거 */
+    border: none;             /* 버튼 테두리 제거 */
+    outline: none;            /* 포커스 상태의 외곽선 제거 */
+    padding: 0;               /* 여백 제거 */
+    font-size: inherit;       /* 폰트 크기 상속 */
+    color: inherit;           /* 텍스트 색상 상속 */
+  }
+  
+.navbar-toggler:focus {
+    box-shadow: none;         /* 포커스 상태의 그림자 제거 */
+  }
+
+.navbar.activated {
+      opacity: 1;
+}
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-item {
+    padding-bottom: 0px;
+}
+
+.nav-item2 {
+    border: none;
+    outline: none; /* 버튼이 클릭되었을 때 외곽선도 없애려면 추가 */
+    line-height: 20px;
+    padding: 2px;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* 부드러운 효과 */
+    margin: 1px;
+}
+
+.navbar-nav .nav-item .navbar-toggler {
+    margin-left: 15px; /* 아이템 간 간격 */
+}
+
+.cultural-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.fixed-top-left-gif {
+    width: 100px;/*  GIF 크기 조정 */
+    /* height: auto; /* 비율 유지 */
+    display: block; /* 블록화로 아래 요소와 분리 */
+    max-width: 100%; /* 이미지 반응형 크기 */
+    height: 15%;            /* 컨테이너 높이 */
+    position: relative;       /*위치 지정*/
+    margin-left: 12%;
+   
+}
+
+
+.gif-container {
+    position: relative;
+    z-index: 1;
+    width: 150px;
+    height: 180px;
+    margin-top: 70px; /* 이미지와 텍스트 간격 */
+    /* margin: auto; */
+    font-size: 16px; /* 텍스트 크기 조정 */
+    color: #333; /* 텍스트 색상 */
+    text-align: center; /* 텍스트와 이미지 정렬 */
+    padding: 2px;
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 20px; /* 모서리 둥글게 */
+    
+}
+
+
+.centered-text {
+    margin-top: 5px; /* 이미지와 텍스트 사이 간격 조정 */
+    font-size: 15px; /* 텍스트 크기 조정 */
+    color: #333; /* 텍스트 색상 */
+}
+
+
+.grid-container {
+    position: relative; /* z-index 작동을 위해 필요 */
+    display: grid; /* Grid 활성화 */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 반응형 열 */
+    padding: 10px; /* 내부 여백 */
+    margin: 100px auto;
+    max-width: 1300px; /* 컨테이너의 최대 너비 설정 */
+    z-index: 1; /* 기본 값으로 설정 */
+    overflow-y: auto; /* 내부 스크롤 가능 */
+    height: calc(100vh - 80px); /* viewport에서 header를 제외한 영역 */
+  
+}
+.do-hyeon-regular{
+    justify-content: flex-start !important; /* 상단 정렬 */
+    align-items: flex-start !important; /* 위쪽에 정렬 */
+}
+
+.grid-container::-webkit-scrollbar{
+    display: none; /* Chrome, Safari: 스크롤바 숨기기 */
+}
+/* 검색창 */
+.search {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-width: 400px;
+    background-color: #ffffff; /* 검색창 배경 */
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+}  
+
+.search input {
+    flex: 1;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+} 
+
+ 
+.search button {
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #fc6c85;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search button:hover {
+    background-color: #fc6c85;
+}
+
+.search button:active {
+    background-color: #fc6c85;
+    transform: scale(0.98); /* 클릭 시 살짝 눌리는 효과 */
+}
+#search-app {
+        display: flex;
+        justify-content: space-around; /* 가운데 정렬 */
+        align-items: center; 
+        margin-top: 50px;
+        padding-left: 20px; /* 왼쪽 여백 */
+        
+    
+}
+
+/* menu 버튼  */
+.dropdown-menu {
+    width: auto !important;
+    padding: 5px !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    transition: background-color 0.2s ease !important;
+    overflow: hidden !important;
+    align-items:stretch !important; /* 항목을 부모 너비에 맞춤 */
+}
+.dropdown-item {
+    text-align: center !important;
+    box-sizing: border-box !important; 
+    overflow: hidden !important;
+
+}
+.ms-auto .dropdown-menu {
+    min-width: inherit !important; /* 부모의 크기를 상속 */
+    width: inherit !important; /* 부모의 크기를 상속 */
+}
+@media screen and (max-width: 768px) {
+    .dropdown-menu {
+        width: 150px;
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 8px;
+
+    }
+    .search button {
+        padding: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #fc6c85;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .grid-container {
+        position: relative; /* z-index 작동을 위해 필요 */
+        display: grid; /* Grid 활성화 */
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 반응형 열 */
+        padding: 10px; /* 내부 여백 */
+        margin: 100px auto;
+        max-width: 1300px; /* 컨테이너의 최대 너비 설정 */
+        z-index: 1; /* 기본 값으로 설정 */
+        overflow-y: auto; /* 내부 스크롤 가능 */
+        height: calc(100vh - 80px); /* viewport에서 header를 제외한 영역 */
+      
+    }
+}
+
+
+body, html {
+    position: static;
+    overflow: visible; /* 스크롤 제한 제거 */
+    z-index: auto; /* 부모 요소의 z-index 초기화 */
+}

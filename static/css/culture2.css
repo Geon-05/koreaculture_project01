@@ -1,0 +1,23 @@
+.app {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.gif-container {
+    width: 200px;
+    margin-top: 10px; /* 이미지와 텍스트 간격 */
+    font-size: 16px; /* 텍스트 크기 조정 */
+    color: #333; /* 텍스트 색상 */
+    text-align: center; /* 텍스트와 이미지 정렬 */
+    background-color: #f9f9f9; /* 배경색 */
+    padding: 1px;
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 20px; /* 모서리 둥글게 */
+}
+
+.grid-container {
+    display: grid; /* Grid 활성화 */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 반응형 열*/
+    padding: 1%; /* 내부 여백 */
+    margin: 0 auto; /* 가운데 정렬을 위해 상하 좌우 여백 자동 */
+    max-width: 1300px; /* 컨테이너의 최대 너비 설정 */
+}

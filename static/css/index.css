@@ -1,0 +1,210 @@
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f7f7f7;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 90vh;
+}
+
+/* 네비게이션바 */
+header {
+    width: 100%;
+    position: fixed;
+}
+.navbar {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.navbar-toggler {
+    box-shadow: none;         /* 기본 그림자 제거 */
+    background: none;         /* 배경 제거 */
+    border: none;             /* 버튼 테두리 제거 */
+    outline: none;            /* 포커스 상태의 외곽선 제거 */
+    padding: 0;               /* 여백 제거 */
+    font-size: inherit;       /* 폰트 크기 상속 */
+    color: inherit;           /* 텍스트 색상 상속 */
+  }
+
+.navbar-toggler:focus {
+    box-shadow: none;         /* 포커스 상태의 그림자 제거 */
+  }
+
+.navbar.activated {
+      opacity: 1;
+}
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-item {
+    padding-bottom: 0px;
+}
+
+.nav-item2 {
+    border: none;
+    outline: none; /* 버튼이 클릭되었을 때 외곽선도 없애려면 추가 */
+    line-height: 20px;
+    padding: 2px;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* 부드러운 효과 */
+    margin: 1px;
+}
+
+.navbar-nav .nav-item .navbar-toggler {
+    margin-left: 15px; /* 아이템 간 간격 */
+}
+
+.cultural-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+
+}
+.dropdown-menu {
+    width: auto !important;
+    padding: 5px !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    transition: background-color 0.2s ease !important;
+    overflow: hidden !important;
+    align-items: stretch !important; /* 항목을 부모 너비에 맞춤 */
+}
+.dropdown-item {
+    text-align: center !important;
+    box-sizing: border-box !important; 
+    overflow: hidden !important;
+
+}
+.ms-auto .dropdown-menu {
+    min-width: inherit !important; /* 부모의 크기를 상속 */
+    width: inherit !important; /* 부모의 크기를 상속 */
+}
+@media screen and (max-width: 768px) {
+    .dropdown-menu {
+        width: 150px;
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+/* 페이지 콘텐츠 */
+
+.container {
+    text-align: center;
+    margin-top: 150px; /* 위쪽 여백 추가 */
+
+}
+
+
+@keyframes bounceTextWithShadow {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 0;
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    30% {
+        transform: scale(1.2) translateY(-10px);
+        opacity: 1;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+    }
+    50% {
+        transform: scale(1) translateY(0);
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    70% {
+        transform: scale(1.1) translateY(-5px);
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0); /* 그림자 제거 */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* 시작 시 보이지 않음 */
+    }
+    100% {
+        opacity: 1; /* 끝에는 완전히 보임 */
+    }
+}
+
+.bounce-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2196F3;
+    text-align: center;
+    display: inline-block;
+    animation: bounceTextWithShadow 0.6s ease-in-out;
+    animation-delay: 0.1s;
+}
+
+
+.fade-in-text {
+    font-size: 16px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵게 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    animation: fadeIn 2s ease-out; /* 애니메이션 적용 */
+}
+
+.fade-in-text2 {
+    font-size: 16px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵게 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    animation: fadeIn 4s ease-out; /* 애니메이션 적용 */
+    background-color: rgb(247, 138, 156);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: translateZ(0);
+}
+
+.fade-in-text2:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fade-in-text2:hover {
+    background-color: rgb(247, 128, 156);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px) scale(1.05);
+}
+
+.shatter-in {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.shatter-in span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) rotate(-15deg);
+    animation: shatterFade 0.6s ease forwards;
+    animation-delay: calc(var(--index) * 0.05s);
+}
+
+@keyframes shatterFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) rotate(-15deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+

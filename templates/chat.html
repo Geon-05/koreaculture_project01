@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS 파일 -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+        <!-- <link rel="stylesheet" href="style.css?v=1.0"> -->
+        <!-- Google Fonts 및 아이콘 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Dongle&family=Jua&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Petite Vue -->
+        <script src="https://unpkg.com/petite-vue@0.2.0" defer></script>
+        <!-- Bootstrap JavaScript and Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+        <!-- Custom JS 파일 -->
+        <script src="/static/js/chat.js" defer></script> 
+</head>
+<body>
+    <header id="app">  
+    <!--네비게이션바-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="/">
+            <img src="/static/문화셈터logo.png" alt="Home Icon" class="cultural-image" style="height: 24px; width: auto;">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" type="button" href="/"></a></li>
+                    <!-- chatbot 버튼 추가 -->
+                    <li class="nav-item">
+                        <button class="nav-item2 nav-link" id="chatbotbutton" @click="chatbot" >chatbot</a>
+                        </li>
+                        <!--culture 버튼 추가 -->
+                        <li class="nav-item">
+                            <button class="nav-item2 nav-link" id="culturebutton" @click="culture">culture</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-auto">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/chat">Chatbot</a></li>
+                            <li><a class="dropdown-item" href="/culture">Culture</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+    </header>
+   
+    <!-- 채팅 컨테이너 -->
+    <div id="chat-container" class="jua-regular">
+        <!-- 채팅 메시지 표시 -->
+        <div ref="chatMessages" id="chat-messages">
+            <div v-for="(message, index) in messages" :key="index" :class="['message', message.sender === '챗봇' ? 'bot-message' : 'user-message']">
+                <img v-if="message.sender === '챗봇'" src="./static/free-animated-icon-placeholder-12589164.gif" alt="Chatbot Avatar" class="bot-avatar">
+                <span v-html="message.sender + ':<br>' + message.text"></span>
+            </div>
+            <div v-if="messages.length === 0" class="default-messages">
+                <h2 class="black-han-sans-regular gradient-text">안녕하세요! 저는 여가생활 정보를 알려주는 AI 챗봇 입니다!</h2>
+                <p>일상 언어로 편하게 질문해주세요!</p>
+                <p>어떻게 질문을 해야 할지 잘 모르시겠다구요? 아래 예시 질문을 확인해보세요!</p>
+                
+                <div class="example-questions">
+                    <div class="example-btn dongle-regular">👥 나와 비슷한 사람들은 어떤 여가생활을 하는지 찾아줘</div>
+                    <div class="example-btn dongle-regular">📈 내가 즐겨하는 여가생활의 평균 비용을 알고싶어</div>
+                    <div class="example-btn dongle-regular">📊 내가 좋아하는 여가생활과 추천하는 여가생활의 평균 비용 알려줘</div>
+                </div>
+                
+                <p><p>더 많은 자료를 찾고있나요? 추천 사이트를 방문해보세요!</p></p>
+                <div class="more-questions">
+                    <button class="category-btn" onclick="window.open('https://stat.mcst.go.kr/portal/main', '_blank')">문화셈터</button>
+                    <button class="category-btn" onclick="window.open('https://data.seoul.go.kr/bsp/wgs/index.do', '_blank')">서울 데이터 허브</button>
+                </div>
+                <br>
+                <p>지금 바로 질문을 해보세요😎</p>
+            </div>
+            <div v-show="isLoading" class="message bot-message loading-message">
+                <img src="./static/free-animated-icon-loading-17905718.gif" alt="로딩 중..." class="loading-gif">
+                <p>사용자의 질문에 대한 답을 찾고 있어요...</p>
+            </div>
+            
+        </div>
+            
+        
+        <!-- 사용자 입력 -->
+        <div id="user-input-container">
+            <input id="user-input"  v-model="userInput" type="text" placeholder="메시지를 입력하세요..." />
+            <button @click="sendMessage" id="send-button" :disabled="isLoading">전송</button>
+        </div>
+    </div>
+    <footer>
+            <!-- 추천 박스 -->
+    <div class="recommendation-container"> 
+        <div class="recommendation-box1" id="recommendation-1">
+            <button class="recommendation-button" @click="recommend('비슷한 여가 추천')">비슷한 여가 추천</button>
+    </div>
+    <div class="recommendation-box2" id="recommendation-2">
+        <button class="recommendation-button" @click="recommend('여가 금액별 추천')">여가 금액별 추천</button>
+    </div>
+    <div class="recommendation-box3" id="recommendation-3">
+        <button class="recommendation-button" @click="recommend('인기 여가 추천')">인기 여가 추천</button>
+    </div>
+    </div>
+</footer>
+</body>
+    
+</html>

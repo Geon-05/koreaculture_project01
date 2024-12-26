@@ -1,0 +1,12 @@
+dataset/
+model/
+saved_model/
+bigfile/
+important/
+**/__pycache__/
+present/
+.ssh/
+.vscode-server/
+.gitconfig
+public_key.pub
+data/

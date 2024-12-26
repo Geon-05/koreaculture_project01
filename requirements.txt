@@ -1,0 +1,7 @@
+pandas
+langchain_community
+google-api-python-client
+requests
+google-generativeai
+scikit-learn
+openpyxl
