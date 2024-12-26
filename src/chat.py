@@ -172,8 +172,6 @@ def cosine(message):
     data = {key: (1 if key in list_data else 0) for key in culture_code_val_dict.keys()}
     data_df = pd.DataFrame([data])
     
-    # new_df = pd.concat([user_culture_df, data_df], ignore_index=True)
-    
     # 코사인 유사도 함수 정의
     def cos_sim(A, B):
         return dot(A, B) / (norm(A) * norm(B))
